@@ -61,7 +61,13 @@ wpscan --url http;//172.17.0.3/wordpress --enumerate u
 ```
 Encontramos un usuario llamado mario.
 
+![wp1](./images/users.png)
+
+
 Intentamos una verificacion en el panel de login y nos la da.
+
+![wp2](./images/verificacionuser.png)
+
 
 Podríamos usar hydra para sacar el password del panel de login con  http-post-form pero el mismo wpscan nos lo hace mas fácil.
 
@@ -70,19 +76,34 @@ wpscan -U mario -P /usr/share/wordlists/rockyou.txt --url http://172.17.0.3/word
 ```
 Wpscan nos saca la contraseña de mario:love
 
+![wp32](./images/passwordmario.png)
+
+
 Ya con credenciales validas ya podemos entrar al panel de control de wordpress.
+
+![wp4](./images/panel.png)
+
 
 Estamos en el panel de control de wordpress pero lo que queremos es acceder al servidor asi que podemos probar de conseguir una reverse shell en php, para ello usaremos el  **Theme Code Editor** que sirve para editar directamente los archivos de código de un tema, como style.css, functions.php, y otras plantillas.
 
 Para ello buscaremos la plantilla functions.php que nos permite PHP e iremos a la pagina https://www.revshells.com/ a buscar la PHP reverse shell de Pentest Monckey y la añadimos a functions.php le damos a update.
 
+![wp5](./images/reverse.png)
+
+
 Ahora solo quedara poner netcat a la escucha  al puerto que pusimos la revshell e ir a buscar el directorio functions.php al navegador. Conseguimos acceso al servidor como www-data.
+
+![wp6](./images/revok.png)
+
 
 Haremos tratamiento de tty para tener una shell totalmente interactiva.
 
 ## Escalada de privilegios
 
 Para la escalada de privilegios sudo no nos sirve porque no esta instalado pero encontramos un binario SUID interesante `/env`. `env` es un comando de Linux que muestra o modifica variables de entorno y puede ejecutar programas en un entorno específico.
+
+![esc1](./images/suid.png)
+
 
 Como binario env tiene el bit SUID y pertenece a root lo ejecutaremos para obtener una shell con privilegios elevados con 
 
@@ -94,3 +115,6 @@ Como binario env tiene el bit SUID y pertenece a root lo ejecutaremos para obten
 - `p` en Bash evita que los privilegios se bajen automáticamente.
 
 Conseguimos ser root.
+
+![esc2](./images/root.png)
+
