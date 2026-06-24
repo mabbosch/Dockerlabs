@@ -38,6 +38,9 @@ Nmap nos muestra solo un puerto HTTP abierto por el que corre aparentemente un a
 
 Como no existe nada mas que este puerto intentaremos hacer un poco de fuzzing de directorios ocultos para encontrar algo mas. Encontramos un directorio llamado wordpress.
 
+![gob](./images/gobastard.png)
+
+
 Nos encontramos una pagina de wordpress llamada web invulnerable.
 
 Como en todos los wordpress existe un panel de login de administrador en el directorio wp-admin, en esta también.
