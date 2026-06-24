@@ -33,6 +33,9 @@ Nmap done: 1 IP address (1 host up) scanned in 7.03 seconds
 ```
 Nmap nos muestra solo un puerto HTTP abierto por el que corre aparentemente un apache con su pagina de inicio.
 
+![web](./images/web1.png)
+
+
 Como no existe nada mas que este puerto intentaremos hacer un poco de fuzzing de directorios ocultos para encontrar algo mas. Encontramos un directorio llamado wordpress.
 
 Nos encontramos una pagina de wordpress llamada web invulnerable.
