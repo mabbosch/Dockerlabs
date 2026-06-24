@@ -43,7 +43,13 @@ Como no existe nada mas que este puerto intentaremos hacer un poco de fuzzing de
 
 Nos encontramos una pagina de wordpress llamada web invulnerable.
 
+![web2](./images/web2.png)
+
+
 Como en todos los wordpress existe un panel de login de administrador en el directorio wp-admin, en esta también.
+
+![web3](./images/wpadmin.png)
+
 
 ## Explotación de wordpress
 
