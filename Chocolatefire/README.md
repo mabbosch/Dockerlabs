@@ -185,7 +185,7 @@ Este script pide al usuario que ingrese el número 1 para hacer un backup de sus
 
 Este script podria ser una buena escalada de privilegios hacia root, ejecutamos el comando sudo -l y nos lo confirma.
 
-![esc2](./images/sudolpingui.png)
+![esc2](./images/sudolpinqui.png)
 
 Llegados a este punto reconozco que me estanque y no supe como explotar este script vulnerable, tiré hacia atrás y me fui a metasploit (después explicaré que hice) pero tirando de writeup vi la manera de explotarlo y me pareció muy interesante así que la probé.
 
