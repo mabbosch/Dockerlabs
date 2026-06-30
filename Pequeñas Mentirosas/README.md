@@ -36,14 +36,24 @@ El escaneo nos muestra dos unicos puertos abiertos el 80 que pertenece a HTTP co
 
 Vamos al navegador y nos nuestra una pista.
 
+![web1](./images/web.png)
+
 Reconozco que esta fue la parte que mas me costo de la maquina porque tarde mucho en darme cuenta que A era un usuario, hice infinidad de pruebas antes con fuzzing, burpsuite, inspeccione a fondo la web, etc .. hasta que al final caí en la cuenta que A era un usuario y que la clave seria el password.
 
 Dicho esto, me dispuse a realizar un ataque de fuerza bruta con hydra, y pam! saque el password de SSH. `a:secret`
+
+![hy](./images/hydra1.png)
 
 Nos conectamos por SSH, y vemos que existe otro usuario llamado spencer.
 
 Nuestro usuario actual “a” no tiene ningún tipo de privilegio en nada así que intentamos de nuevo fuerza bruta a spencer con hydra. Sacamos el password de spencer. `spencer:password1`
 
+![hy1](./images/hydra2.png)
+
+
 Nos conectamos por SSH y vemos los privilegios de spencer. El puede usar Python3 con privilegios de superusuario si que probamos de abrir un shell y nos convertimos en root.
 
-La maquina en sí es sencilla pero hay que caer en la cuenta que “a” es un usuario y a mi me costo. Así y todo maquina powneada!!
+![root](./images/root.png)
+
+
+La maquina en sí es sencilla pero hay que caer en la cuenta que “a” es un usuario y a mi me costo. 
