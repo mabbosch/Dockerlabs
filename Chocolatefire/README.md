@@ -199,18 +199,28 @@ Este script te pide que pongas un número. Si pones el número 1, dice “El nú
 
 Ahora, si eres capaz de ejecutar este script como `root`**,** como es en este caso, puedes inyectar esto `a[$(whoami >&2)]+1` Esto hará que el script ejecute el comando `whoami,` pero también sigue haciendo la comparación con el número 1.
 
-![ssh](./images/image22.png)
+![esc3](./images/priv1.png)
 
 Así que si en lugar de poner un comando inofensivo como whoami, le inyectamos un /bin/bash, nos abrirá un shell como root.Esta sería la inyección a[$(/bin/bash >&2)]+1
+
+![esc3](./images/root.png)
 
 ## Explotación y escalada usando Metasploit
 
 Una vez estancada en la escalada de privilegios decidí volver atrás y buscar algún exploit en  Metasploit para openfire y lo había.
 
+![meta](./images/meta0.png)
+
 Se trataba de un exploit muy actual y con calificación excelente. Usamos el 4.
 
 Configuramos todas las opciones, simplemente las IP’s.
 
+![meta1](./images/meta1.png)
+
+
 E iniciamos el exploit, directamente nos convertimos en root.
+
+![meta2](./images/meta2.png)
+
 
 Así que, mi reflexión sobre esta máquina es que si se hace con metasploit es una maquina fácil tirando a muy fácil, teniendo las credenciales por defecto en el panel de control que nos permite leer los usuarios se convierte en fácil sin, sin credenciales por defecto seria como dice un nivel medium. 
