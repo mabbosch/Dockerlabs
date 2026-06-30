@@ -35,23 +35,39 @@ Tenemos dos puertos abiertos, el puerto 22 donde corre SSH y el 80 por donde par
 
 Vamos al navegador y confirmamos que si se trata de una página de apache.
 
-![](./images/image15.png)
+![](./images/web.png)
 
 Como no parece que haya nada interesante hacemos un poco de fuzzing web para buscar directorios ocultos con gobuster.
 
+![](./images/gobuster.png)
+
 Nos llama la atención que existe dos index, uno es php y el otro html, miramos de acceder a index.php y nos encontramos una cadena de números y letras.
+
+![](./images/cadena.png)
+
 
 ## Explotación y fuerza bruta
 
 Intentamos descifrar pero no parece que sea nada encriptado así que se nos ocurre que pueda ser una contraseña. Usaremos `hydra` para buscar posibles usuarios.
 
+![](./images/hydra.png)
+
 Encontramos al usuario Carlos y nos conectamos por SSH.
+
+![](./images/ssh.png)
+
 
 ## Escalada de privilegios
 
 Probamos si tenemos privilegios con `sudo` y nos devuelve que podemos ejecutar un script que se encuentra en /opt como root.
 
+![](./images/sudol.png)
+
+
 Le echamos un vistazo al script.
+
+![](./images/script.png)
+
 
 El script copia el archivo ubicado en `/opt/script.py` a `/tmp/script_backup.py`. Si ambos archivos existen, el archivo de destino será sobrescrito. Lo primero que miramos es si tenemos permiso de escritura para modificar el script pero no lo tenemos.
 
