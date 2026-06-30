@@ -75,6 +75,8 @@ Utiliza una librería  llamada shutil, asi que miramos el orden de prioridad del
 
 `python3 -c 'import sys; print(sys.path)’`
 
+![](./images/priority.png)
+
 Nos muestra que nuestro directorio actual sera el primero en recorrer para buscar shutil.
 
 Así que vamos a crear un archivo llamado shutil.py donde pondremos:
@@ -90,3 +92,6 @@ Este script nos deberia abrir un shell como root.
 Le damos permisos de ejecución `chmod +x shutil.py .`
 
 Ejecutamos `script.py` con `sudo.` Ya somos root
+
+![](./images/root.png)
+
