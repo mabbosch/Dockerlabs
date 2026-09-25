@@ -61,7 +61,7 @@ El escaneo de **Nmap** revela que el host **172.17.0.2** está activo y tiene **
 
 Nos dirigimos a la web y encontramos una pagina que nos habla sobre que es samba y para que sirve, inspeccionando el codigo no vemos nada interesante que pueda servir, también se intenta algo de fuzzing web pero no lleva a ningún lado.
 
-![web.png](Domain%20(Dockerlabs)/web.png)
+![web.png](Domain%20(Dockerlabs)images/web.png)
 
 Visto esto ahora sabemos que debemos centrarnos en los puertos Samba para llegar a la solución.
 
