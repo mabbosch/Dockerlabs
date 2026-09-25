@@ -71,17 +71,17 @@ Como no disponemos de ningún potencial usuario, lo primero que haremos una enum
 
 La herramienta nos detecta dos potenciales usuarios llamados james y bob.
 
-![enumusers.png](Domain%20(Dockerlabs)/enumusers.png)
+![enumusers.png](images/enumusers.png)
 
 También nos da el nombre de dos carpetas compartidas, una realmente interesante llamada  html.
 
-![recursosenum.png](Domain%20(Dockerlabs)/recursosenum.png)
+![recursosenum.png](images/recursosenum.png)
 
 ## Explotación de Samba
 
 Intentamos acceder a los recursos compartidos vía smbclient pero nos pide contraseña, también lo probamos con crackmapexec con el password vacío y no nos permite el acceso.
 
-![crackloginfall.png](Domain%20(Dockerlabs)/crackloginfall.png)
+![crackloginfall.png](images/crackloginfall.png)
 
 Ahora tenemos usuarios pero no contraseñas así que probamos fuerza bruta con crackmapexec para sacar la contraseña.
 
@@ -89,21 +89,21 @@ Ahora tenemos usuarios pero no contraseñas así que probamos fuerza bruta con c
 
 Tarda un ratito pero conseguimos el password de `bob:star`
 
-![bruteforcecrck.png](Domain%20(Dockerlabs)/bruteforcecrck.png)
+![bruteforcecrck.png](images/bruteforcecrck.png)
 
 No conseguimos el password de james pero si el de `root:123456`
 
-![rootpass.png](Domain%20(Dockerlabs)/rootpass.png)
+![rootpass.png](images/rootpass.png)
 
 Pero probamos de acceder al recurso y no tenia acceso.
 
-![rootnoacces.png](Domain%20(Dockerlabs)/rootnoacces.png)
+![rootnoacces.png](images/rootnoacces.png)
 
 Pero con bob si accedemos a Samba y vemos que allí se encuentra alojada la web, si podemos subir una reverse shell en php nos dará acceso directo al servidor.
 
 Nos dirigimos a la web [https://www.revshells.com/](https://www.revshells.com/) y nos copiamos la PHP revshell de PentestMonckey que siempre funciona muy biena un archivo .php , la subimos a Samba.
 
-![putreverse.png](Domain%20(Dockerlabs)/putreverse.png)
+![putreverse.png](images/putreverse.png)
 
 Ponemos netcat a la escucha, y vamos al navegador a buscarla, ya tenemos acceso como www-data.
 
@@ -111,17 +111,17 @@ Ponemos netcat a la escucha, y vamos al navegador a buscarla, ya tenemos acceso 
 
 Una vez dentro y con el tratamiento de la tty hecho vamos a probar si podemos ser bob, por la vulnerabilidad mas conocidad del mundo, el re aprovechamiento de contraseñas. Ya somos bob.
 
-![pivotigbob.png](Domain%20(Dockerlabs)/pivotigbob.png)
+![pivotigbob.png](images/pivotigbob.png)
 
 ## Escalada de privilegios
 
 Para la escalada probamos sudo -l pero no tiene sudo instalado asi que intentamos con binarios SUID.
 
-![binarios.png](Domain%20(Dockerlabs)/binarios.png)
+![binarios.png](images/binarios.png)
 
 Tenemos permisos especiales para ejecutar nano y son de root.
 
-![rootperm.png](Domain%20(Dockerlabs)/rootperm.png)
+![rootperm.png](images/rootperm.png)
 
 La pagina GTFOBins nos da opciones pero no disponemos del comando sudo así que se nos ocurre modificar el archivo /etc/passwd para cambiar la configuración de root y que este no disponga de contraseña.
 
@@ -129,6 +129,6 @@ Para ello solo tenemos que dejar vacio el campo de la contraseña.
 
 `root::0:0:root:/root:/bin/bash`
 
-Conseguimos la escalada y ya somos root, maquina powneada.
+Conseguimos la escalada y ya somos root.
 
-![root.png](Domain%20(Dockerlabs)/root.png)
+![root.png](images/root.png)
